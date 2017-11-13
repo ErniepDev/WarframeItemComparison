@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warframe.ItemComparison", "Warframe.ItemComparison\Warframe.ItemComparison.csproj", "{AC0CF0AB-6A28-4FEC-813F-DFC69BA978FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warframe.ItemComparison.Tests", "Warframe.ItemComparison.Tests\Warframe.ItemComparison.Tests.csproj", "{478333CB-580F-44CC-9823-0A4C0E2FA65C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC0CF0AB-6A28-4FEC-813F-DFC69BA978FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0CF0AB-6A28-4FEC-813F-DFC69BA978FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0CF0AB-6A28-4FEC-813F-DFC69BA978FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0CF0AB-6A28-4FEC-813F-DFC69BA978FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478333CB-580F-44CC-9823-0A4C0E2FA65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478333CB-580F-44CC-9823-0A4C0E2FA65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478333CB-580F-44CC-9823-0A4C0E2FA65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478333CB-580F-44CC-9823-0A4C0E2FA65C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85E40A9E-F590-411D-A786-2AD1A127BF2C}
+	EndGlobalSection
+EndGlobal

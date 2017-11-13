@@ -1,0 +1,20 @@
+﻿@model WeaponService
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Warframe Item Comparison</h1>
+    @foreach (var weapon in Model.Weapons())
+    {
+        <p>
+        @weapon.ToString();
+        <br/>
+        @foreach (var stat in weapon.WeaponStats())
+        {
+            @stat.ToString();
+        }
+        </p>
+    }
+</div>
+
