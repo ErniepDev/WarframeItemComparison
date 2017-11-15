@@ -1,7 +1,5 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Warframe.ItemComparison.Models;
 
 namespace Warframe.ItemComparison.Tests
 {
@@ -14,6 +12,14 @@ namespace Warframe.ItemComparison.Tests
             WeaponStat stat = new WeaponStat("Damage",3);
 
             stat.ToString().Should().Be("Damage: 3");
+        }
+        [TestMethod]
+        public void ShouldBeEqualWhenNameAndValueAreSame()
+        {
+            IWeaponStat actual = new WeaponStat("damage", 3);
+            IWeaponStat expected = new WeaponStat("damage", 3);
+
+            actual.Should().Be(expected);
         }
     }
 }

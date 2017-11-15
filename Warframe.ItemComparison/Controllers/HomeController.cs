@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Warframe.ItemComparison.Controllers
 {
@@ -11,13 +10,13 @@ namespace Warframe.ItemComparison.Controllers
         {
         }
 
-        public HomeController(WeaponService weaponService)
+        internal HomeController(WeaponService weaponService)
         {
             _weaponService = weaponService;
         }
 
         [HttpGet]
-        public ViewResult Index()
+        internal ViewResult Index()
         {
             return View(_weaponService);
 

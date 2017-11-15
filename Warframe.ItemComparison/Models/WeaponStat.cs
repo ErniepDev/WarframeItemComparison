@@ -1,36 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Warframe.ItemComparison.Models
+namespace Warframe.ItemComparison
 {
-    public interface IWeaponStat
+    internal interface IWeaponStat
     {
         string ToString();
     }
 
-    public class WeaponStat : IWeaponStat
+    internal class WeaponStat : IWeaponStat
     {
-        private readonly int _amount;
-        private readonly string _stat;
+        private readonly int _name;
+        private readonly string _value;
 
-
-        public WeaponStat(string stat)
+        [JsonConstructor]
+        public WeaponStat(string name, int value)
         {
-            _stat = stat;
-           
+            _value = name;
+            _name = value;
         }
 
-        public WeaponStat(string stat, int amount)
+        public override bool Equals(object obj)
         {
-            _stat = stat;
-            _amount = amount;
+            var stat = obj as WeaponStat;
+            return stat != null &&
+                   _name == stat._name &&
+                   _value == stat._value;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 403100198;
+            hashCode = hashCode * -1521134295 + _name.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_value);
+            return hashCode;
         }
 
         public override string ToString()
         {
-            return $"{_stat}: {_amount}";
+            return $"{_value}: {_name}";
         }
+
     }
 }
