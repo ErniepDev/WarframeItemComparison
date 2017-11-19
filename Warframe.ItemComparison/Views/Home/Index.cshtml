@@ -1,20 +1,20 @@
-﻿@model WeaponService
+﻿@model List<Warframe.ItemComparison.Weapon>
 @{
     ViewBag.Title = "Home Page";
 }
-
 <div class="jumbotron">
     <h1>Warframe Item Comparison</h1>
-    @foreach (var weapon in Model.Weapons())
+    @foreach (var weapon in Model)
     {
         <p>
-        @weapon.ToString();
+        @weapon.DisplayTitle();
         <br/>
         @foreach (var stat in weapon.WeaponStats())
         {
-            @stat.ToString();
+            @stat.Display();
         }
         </p>
     }
 </div>
 
+@Html.DropDownListFor(x => x.DisplayTitle(),new Sel)

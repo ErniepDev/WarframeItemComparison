@@ -8,7 +8,7 @@ namespace Warframe.ItemComparison.Tests
     [TestClass]
     public class WeaponBuilderTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory("Unit")]
         public void ShouldReturnWeaponsWithStats()
         {
             string weaponData = "[{\"name\": \"axe of frost\", \"stats\": [{\"name\": \"damage\",\"value\": 3}]},{\"name\": \"sword of fire\", \"stats\": [{\"name\": \"damage\",\"value\": 10}]}]";          

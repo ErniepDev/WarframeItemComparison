@@ -2,13 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Warframe.ItemComparison.Controllers;
 using FluentAssertions;
+using System.Collections.Generic;
 
 namespace Warframe.ItemComparison.Tests
 {
     [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [TestMethod, TestCategory("Unit")]
         public void Index()
         {
             // Arrange
@@ -21,7 +22,7 @@ namespace Warframe.ItemComparison.Tests
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("Unit")]
         public void ShouldReturnViewResult()
         {
             HomeController controller = new HomeController();
@@ -32,16 +33,17 @@ namespace Warframe.ItemComparison.Tests
   
         }
 
-        [TestMethod]
-        public void ShouldPassModelToHomeController()
+        [TestMethod, TestCategory("Unit")]
+        public void ShouldHaveExpectedModel()
         {
-            WeaponService weapons = new WeaponService();
-            HomeController controller = new HomeController(weapons);
+            string weaponData = "[{\"name\": \"axe of frost\", \"stats\": [{\"name\": \"damage\",\"value\": 3}]},{\"name\": \"sword of fire\", \"stats\": [{\"name\": \"damage\",\"value\": 10}]}]";
+            WeaponService weaponService = new WeaponService(weaponData);
+            HomeController controller = new HomeController(weaponService);
+            List<Weapon> expected = new WeaponBuilder(weaponService.WeaponsData()).BuildWeapons();
 
+            var actual = controller.Index().Model as List<Weapon>;
 
-            ViewResult result = controller.Index();
-
-            result.Model.Should().Be(weapons);
+            actual.Should().BeEquivalentTo(expected);
         }
     }
 }

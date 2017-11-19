@@ -6,14 +6,7 @@ namespace Warframe.ItemComparison.Tests
     [TestClass]
     public class WeaponStatTests
     {
-        [TestMethod]
-        public void ShouldReturnStatsOnToString()
-        {
-            WeaponStat stat = new WeaponStat("Damage",3);
-
-            stat.ToString().Should().Be("Damage: 3");
-        }
-        [TestMethod]
+        [TestMethod, TestCategory("Unit")]
         public void ShouldBeEqualWhenNameAndValueAreSame()
         {
             IWeaponStat actual = new WeaponStat("damage", 3);
@@ -21,5 +14,15 @@ namespace Warframe.ItemComparison.Tests
 
             actual.Should().Be(expected);
         }
+
+        [TestMethod, TestCategory("Unit")]
+        public void DisplayShouldReturnExpectedStringDetails()
+        {
+            string expected = "damage: 3";
+            string actual = new WeaponStat("damage", 3).Display();
+  
+            expected.Should().Be(actual);
+        }
+
     }
 }

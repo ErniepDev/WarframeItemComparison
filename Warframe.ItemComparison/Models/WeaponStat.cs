@@ -3,43 +3,48 @@ using Newtonsoft.Json;
 
 namespace Warframe.ItemComparison
 {
-    internal interface IWeaponStat
+    public interface IWeaponStat
     {
-        string ToString();
+        bool Equals(object obj);
+        int GetHashCode();
+        string Display();
     }
 
-    internal class WeaponStat : IWeaponStat
+    public sealed class WeaponStat : IWeaponStat
     {
-        private readonly int _name;
-        private readonly string _value;
+        private readonly string _name;
+        private readonly int _value;
 
         [JsonConstructor]
-        public WeaponStat(string name, int value)
+        public  WeaponStat(string name, int value)
         {
-            _value = name;
-            _name = value;
+            _value = value;
+            _name = name;
         }
 
         public override bool Equals(object obj)
         {
             var stat = obj as WeaponStat;
-            return stat != null &&
-                   _name == stat._name &&
-                   _value == stat._value;
+            return stat != null && Equals(stat);  
+        }
+
+        private bool Equals(WeaponStat stat)
+        {
+            return _name == stat._name &&
+                  _value == stat._value;
         }
 
         public override int GetHashCode()
         {
             var hashCode = 403100198;
             hashCode = hashCode * -1521134295 + _name.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_value);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_name);
             return hashCode;
         }
 
-        public override string ToString()
+        public string Display()
         {
-            return $"{_value}: {_name}";
-        }
-
+            return $"{_name}: {_value}";   
+        } 
     }
 }
